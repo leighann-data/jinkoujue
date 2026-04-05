@@ -111,6 +111,11 @@
       transition: background-color 0.2s;
     }
 
+    .btn:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+    }
+
     .btn-secondary {
       background-color: #ecf0f1;
       color: #333;
@@ -338,6 +343,29 @@
       font-size: 18px;
       color: #27ae60;
       margin-left: 8px;
+    }
+
+    .qimen-check-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .qimen-check-actions .btn {
+      flex: 1;
+    }
+
+    .qimen-check-status {
+      margin-top: 10px;
+      font-size: 13px;
+      color: #667085;
+    }
+
+    .qimen-check-tip {
+      margin-top: 8px;
+      font-size: 12px;
+      color: #8b96a3;
+      text-align: center;
     }
 
     .btn-confirm {
@@ -1667,9 +1695,64 @@
       </div>
     </div>
 
+    <div class="card">
+      <div class="card-title">奇门局数检查</div>
+      <div class="qimen-jieqi-info">
+        <div class="qimen-jieqi-row qimen-ju-row">
+          <div class="qimen-jieqi-item">
+            <span class="qimen-jieqi-label">当前节气:</span>
+            <strong id="precheckQimenJieqi">--</strong>
+          </div>
+          <div class="qimen-jieqi-item">
+            <span class="qimen-jieqi-label">三元:</span>
+            <strong id="precheckQimenSanyuan">--</strong>
+          </div>
+          <div class="qimen-jieqi-item">
+            <span class="qimen-jieqi-label">自动局数:</span>
+            <strong id="precheckQimenAutoJu" class="qimen-ju-value">--</strong>
+          </div>
+        </div>
+      </div>
+      <div class="qimen-adjust" style="margin-top:0;padding-top:0;border-top:0;">
+        <div class="qimen-adjust-title">查看或调整局数</div>
+        <div class="qimen-adjust-row">
+          <div class="qimen-adjust-item">
+            <label>阴阳遁:</label>
+            <select id="yinYangSelect">
+              <option value="阳遁">阳遁</option>
+              <option value="阴遁">阴遁</option>
+            </select>
+          </div>
+          <div class="qimen-adjust-item">
+            <label>局数:</label>
+            <select id="juShuSelect">
+              <option value="一">一局</option>
+              <option value="二">二局</option>
+              <option value="三">三局</option>
+              <option value="四">四局</option>
+              <option value="五">五局</option>
+              <option value="六">六局</option>
+              <option value="七">七局</option>
+              <option value="八">八局</option>
+              <option value="九">九局</option>
+            </select>
+          </div>
+        </div>
+        <div class="qimen-adjust-result">
+          <span>当前采用:</span>
+          <strong id="adjustedJu">--</strong>
+        </div>
+        <div class="qimen-check-status" id="qimenCheckStatus">请先点击「自动推算局数」</div>
+        <div class="qimen-check-actions">
+          <button class="btn btn-secondary" id="checkJuBtn" type="button">自动推算局数</button>
+        </div>
+      </div>
+    </div>
+
     <!-- 开始计算按钮 -->
     <div class="card" style="padding: 15px;">
-      <button class="btn btn-primary" id="calculateBtn">开始计算</button>
+      <button class="btn btn-primary" id="calculateBtn" disabled>信息确认，开始计算</button>
+      <div class="qimen-check-tip" id="calculateHint">请先自动推算局数</div>
     </div>
 
     <div class="result-tabs">
@@ -1684,7 +1767,7 @@
         <div class="card">
           <div class="card-title">奇门遁甲</div>
           <div class="result-placeholder" id="qimenPlaceholder">
-            请设置时间后点击「开始计算」
+            请先自动推算局数后点击「信息确认，开始计算」
           </div>
           <div class="result-content" id="qimenContent">
             <!-- 节气与局数信息 -->
@@ -1715,41 +1798,18 @@
                   <strong id="qimenSanyuan">--</strong>
                 </div>
                 <div class="qimen-jieqi-item">
-                  <span class="qimen-jieqi-label">推算局数:</span>
+                  <span class="qimen-jieqi-label">采用局数:</span>
                   <strong id="qimenJu" class="qimen-ju-value">--</strong>
                 </div>
               </div>
             </div>
             <div class="qimen-adjust">
-              <div class="qimen-adjust-title">手动调整</div>
-              <div class="qimen-adjust-row">
-                <div class="qimen-adjust-item">
-                  <label>阴阳遁:</label>
-                  <select id="yinYangSelect">
-                    <option value="阳遁">阳遁</option>
-                    <option value="阴遁">阴遁</option>
-                  </select>
-                </div>
-                <div class="qimen-adjust-item">
-                  <label>局数:</label>
-                  <select id="juShuSelect">
-                    <option value="一">一局</option>
-                    <option value="二">二局</option>
-                    <option value="三">三局</option>
-                    <option value="四">四局</option>
-                    <option value="五">五局</option>
-                    <option value="六">六局</option>
-                    <option value="七">七局</option>
-                    <option value="八">八局</option>
-                    <option value="九">九局</option>
-                  </select>
-                </div>
-              </div>
+              <div class="qimen-adjust-title">局数确认</div>
               <div class="qimen-adjust-result">
-                <span>调整后:</span>
-                <strong id="adjustedJu"></strong>
+                <span>自动推算:</span>
+                <strong id="qimenAutoJu">--</strong>
               </div>
-              <button class="btn btn-confirm" id="confirmAdjustBtn">确认调整</button>
+              <div class="qimen-check-status" id="qimenJuSource">尚未开始计算</div>
             </div>
             <div class="qimen-leaders">
               <div class="qimen-leaders-title">值符值使</div>
@@ -1998,7 +2058,7 @@
           <div class="detail-lifa-section">
             <div class="detail-lifa-title">历法信息</div>
             <div class="result-placeholder" id="resultPlaceholder">
-              请设置时间和位置后点击「开始计算」
+              请设置时间和位置后点击「信息确认，开始计算」
             </div>
             <div class="result-content" id="resultContent">
               <div class="detail-lifa-content">
@@ -2199,7 +2259,7 @@
         <div class="card">
           <div class="card-title">金口诀排盘</div>
           <div class="result-placeholder" id="jinkouPlaceholder">
-            请设置时间、位置与金口诀参数后点击「开始计算」
+            请设置时间、位置与金口诀参数后点击「信息确认，开始计算」
           </div>
           <div class="result-content" id="jinkouContent">
             <div class="jinkou-meta">
@@ -3262,6 +3322,9 @@
     let currentLng = null;
     let currentLat = null;
 
+    // 奇门校局状态
+    let pendingQimenContext = null;
+
     // DOM 元素
     const dateInput = document.getElementById('dateInput');
     const timeInput = document.getElementById('timeInput');
@@ -3274,10 +3337,150 @@
     const jinkouDiFen = document.getElementById('jinkouDiFen');
     const jinkouGuiMode = document.getElementById('jinkouGuiMode');
     const jinkouJiangMode = document.getElementById('jinkouJiangMode');
+    const checkJuBtn = document.getElementById('checkJuBtn');
     const calculateBtn = document.getElementById('calculateBtn');
     const resultTabButtons = document.querySelectorAll('.result-tab-btn');
     const resultTabPanels = document.querySelectorAll('.result-tab-panel');
     const locationRadios = document.querySelectorAll('input[name="locationType"]');
+
+    function getCurrentInputSignature() {
+      return JSON.stringify({
+        date: dateInput.value,
+        time: timeInput.value,
+        lng: currentLng,
+        lat: currentLat,
+        useTrueSolarTime: useTrueSolarTime.checked
+      });
+    }
+
+    function setCalculateReady(ready, hintText) {
+      calculateBtn.disabled = !ready;
+      document.getElementById('calculateHint').textContent =
+        hintText || (ready ? '局数已就绪，确认信息后可开始计算' : '请先自动推算局数');
+    }
+
+    function resetQimenCheckState(statusText = '请先点击「自动推算局数」') {
+      pendingQimenContext = null;
+      document.getElementById('precheckQimenJieqi').textContent = '--';
+      document.getElementById('precheckQimenSanyuan').textContent = '--';
+      document.getElementById('precheckQimenAutoJu').textContent = '--';
+      document.getElementById('adjustedJu').textContent = '--';
+      document.getElementById('qimenCheckStatus').textContent = statusText;
+      setCalculateReady(false, '请先自动推算局数');
+    }
+
+    function updateAdjustedJu() {
+      if (!pendingQimenContext) {
+        document.getElementById('adjustedJu').textContent = '--';
+        return;
+      }
+      const yinYang = document.getElementById('yinYangSelect').value;
+      const juShu = document.getElementById('juShuSelect').value;
+      document.getElementById('adjustedJu').textContent = yinYang + juShu + '局';
+    }
+
+    function markQimenSelectionPending(statusText = '局数已自动推算，可直接开始计算') {
+      document.getElementById('qimenCheckStatus').textContent = statusText;
+      setCalculateReady(!!pendingQimenContext, '局数已就绪，确认信息后可开始计算');
+    }
+
+    function invalidateQimenCheck(statusText = '时间或位置已变更，请重新自动推算局数') {
+      resetQimenCheckState(statusText);
+    }
+
+    function buildCalculationContext(showAlert = true) {
+      if (!dateInput.value || !timeInput.value) {
+        if (showAlert) alert('请选择日期和时间');
+        return null;
+      }
+
+      if (currentLng === null || currentLat === null) {
+        if (showAlert) alert('请选择城市或获取当前位置');
+        return null;
+      }
+
+      const [year, month, day] = dateInput.value.split('-').map(Number);
+      const [hour, minute] = timeInput.value.split(':').map(Number);
+      const inputDate = new Date(year, month - 1, day, hour, minute);
+
+      let calcDate = inputDate;
+      const useTrueSolar = useTrueSolarTime.checked;
+      if (useTrueSolar) {
+        calcDate = getTrueSolarTime(inputDate, currentLat, currentLng);
+      }
+
+      const solar = Solar.fromYmdHms(
+        calcDate.getFullYear(),
+        calcDate.getMonth() + 1,
+        calcDate.getDate(),
+        calcDate.getHours(),
+        calcDate.getMinutes(),
+        0
+      );
+      const lunar = solar.getLunar();
+      const eightChar = lunar.getEightChar();
+      if (eightChar.setSect) {
+        eightChar.setSect(1);
+      }
+
+      const yearGan = eightChar.getYearGan();
+      const yearZhi = eightChar.getYearZhi();
+      const monthGan = eightChar.getMonthGan();
+      const monthZhi = eightChar.getMonthZhi();
+      const dayGan = eightChar.getDayGan();
+      const dayZhi = eightChar.getDayZhi();
+      const hourGan = eightChar.getTimeGan();
+      const hourZhi = eightChar.getTimeZhi();
+      const fuTou = getFuTou(dayGan, dayZhi);
+      const sanYuan = getSanYuan(fuTou.zhi);
+      const prevJieQi = lunar.getPrevJieQi();
+      const nextJieQi = lunar.getNextJieQi();
+      const prevJie = lunar.getPrevJie ? lunar.getPrevJie() : prevJieQi;
+      const nextJie = lunar.getNextJie ? lunar.getNextJie() : nextJieQi;
+      const prevJieQiSolar = prevJieQi.getSolar();
+      const nextJieQiSolar = nextJieQi.getSolar();
+      const prevJieSolar = prevJie.getSolar ? prevJie.getSolar() : prevJieQiSolar;
+      const nextJieSolar = nextJie.getSolar ? nextJie.getSolar() : nextJieQiSolar;
+      const prevJieQiDate = new Date(prevJieQiSolar.getYear(), prevJieQiSolar.getMonth() - 1, prevJieQiSolar.getDay(), prevJieQiSolar.getHour(), prevJieQiSolar.getMinute());
+      const nextJieQiDate = new Date(nextJieQiSolar.getYear(), nextJieQiSolar.getMonth() - 1, nextJieQiSolar.getDay(), nextJieQiSolar.getHour(), nextJieQiSolar.getMinute());
+      const prevJieDate = new Date(prevJieSolar.getYear(), prevJieSolar.getMonth() - 1, prevJieSolar.getDay(), prevJieSolar.getHour(), prevJieSolar.getMinute());
+      const nextJieDate = new Date(nextJieSolar.getYear(), nextJieSolar.getMonth() - 1, nextJieSolar.getDay(), nextJieSolar.getHour(), nextJieSolar.getMinute());
+      const currentJieqi = prevJieQi.getName();
+      const autoQimenJu = getQimenJu(currentJieqi, sanYuan);
+
+      return {
+        signature: getCurrentInputSignature(),
+        inputDate,
+        calcDate,
+        useTrueSolar,
+        lunar,
+        year,
+        month,
+        day,
+        hour,
+        minute,
+        yearGan,
+        yearZhi,
+        monthGan,
+        monthZhi,
+        dayGan,
+        dayZhi,
+        hourGan,
+        hourZhi,
+        fuTou,
+        sanYuan,
+        prevJieQi,
+        nextJieQi,
+        prevJie,
+        nextJie,
+        prevJieQiDate,
+        nextJieQiDate,
+        prevJieDate,
+        nextJieDate,
+        currentJieqi,
+        autoQimenJu
+      };
+    }
 
     function switchResultTab(tabName) {
       resultTabButtons.forEach((button) => {
@@ -3312,11 +3515,15 @@
     }
 
     // 更新经纬度显示
-    function updateCoordDisplay(lng, lat) {
+    function updateCoordDisplay(lng, lat, options = {}) {
+      const { invalidate = true } = options;
       currentLng = lng;
       currentLat = lat;
       lngDisplay.textContent = lng !== null ? lng.toFixed(4) : '--';
       latDisplay.textContent = lat !== null ? lat.toFixed(4) : '--';
+      if (invalidate) {
+        invalidateQimenCheck(currentLng === null || currentLat === null ? '请先设置时间和位置，然后点击「自动推算局数」' : '时间或位置已变更，请重新自动推算局数');
+      }
     }
 
     // 城市选择变化
@@ -3377,7 +3584,51 @@
     });
 
     // 当前时刻按钮
-    nowBtn.addEventListener('click', setCurrentTime);
+    nowBtn.addEventListener('click', function() {
+      setCurrentTime();
+      invalidateQimenCheck('时间已变更，请重新自动推算局数');
+    });
+    dateInput.addEventListener('change', function() {
+      invalidateQimenCheck('时间已变更，请重新自动推算局数');
+    });
+    dateInput.addEventListener('input', function() {
+      invalidateQimenCheck('时间已变更，请重新自动推算局数');
+    });
+    timeInput.addEventListener('change', function() {
+      invalidateQimenCheck('时间已变更，请重新自动推算局数');
+    });
+    timeInput.addEventListener('input', function() {
+      invalidateQimenCheck('时间已变更，请重新自动推算局数');
+    });
+    useTrueSolarTime.addEventListener('change', function() {
+      invalidateQimenCheck('计算基准已变更，请重新自动推算局数');
+    });
+
+    checkJuBtn.addEventListener('click', function() {
+      const context = buildCalculationContext(true);
+      if (!context) return;
+
+      pendingQimenContext = context;
+      document.getElementById('precheckQimenJieqi').textContent = context.currentJieqi;
+      document.getElementById('precheckQimenSanyuan').textContent = context.sanYuan;
+      document.getElementById('precheckQimenAutoJu').textContent = context.autoQimenJu;
+
+      document.getElementById('yinYangSelect').value = context.autoQimenJu.startsWith('阳') ? '阳遁' : '阴遁';
+      document.getElementById('juShuSelect').value = context.autoQimenJu.replace(/[阳阴遁局]/g, '');
+      updateAdjustedJu();
+      markQimenSelectionPending('局数已自动推算，如无误可直接开始计算');
+    });
+
+    document.getElementById('yinYangSelect').addEventListener('change', function() {
+      if (!pendingQimenContext) return;
+      updateAdjustedJu();
+      markQimenSelectionPending('局数已调整，如无误可直接开始计算');
+    });
+    document.getElementById('juShuSelect').addEventListener('change', function() {
+      if (!pendingQimenContext) return;
+      updateAdjustedJu();
+      markQimenSelectionPending('局数已调整，如无误可直接开始计算');
+    });
 
     // 计算真太阳时
     function getTrueSolarTime(date, lat, lng) {
@@ -3808,18 +4059,18 @@
       document.getElementById('jinkouSanDong').textContent = result.sanDong.length ? result.sanDong.join('、') : '无';
 
       document.getElementById('jinkouRenYuan').textContent = result.renYuan.stem;
-      document.getElementById('jinkouRenYuanDetail').innerHTML = `<span>${result.renYuan.element}</span><span>${result.renYuan.sign}${result.renYuan.state}</span>`;
+      document.getElementById('jinkouRenYuanDetail').innerHTML = `<span>${result.renYuan.element}</span>`;
 
       document.getElementById('jinkouGuiShen').textContent = `${result.guiShen.stem}${result.guiShen.branch}`;
       document.getElementById('jinkouGuiShenName').textContent = result.guiShen.deity + (result.yongShen === 'guiShen' ? ' · 用' : '');
-      document.getElementById('jinkouGuiShenDetail').innerHTML = `<span>${result.guiShen.element}</span><span>${result.guiShen.sign}${result.guiShen.state}</span><span>${result.guiShen.sha.join('、') || '无神煞'}</span>`;
+      document.getElementById('jinkouGuiShenDetail').innerHTML = `<span>${result.guiShen.element}</span><span>${result.guiShen.sha.join('、') || '无神煞'}</span>`;
 
       document.getElementById('jinkouJiangShen').textContent = `${result.jiangShen.stem}${result.jiangShen.branch}`;
       document.getElementById('jinkouJiangShenName').textContent = result.jiangShen.name + (result.yongShen === 'jiangShen' ? ' · 用' : '');
-      document.getElementById('jinkouJiangShenDetail').innerHTML = `<span>${result.jiangShen.element}</span><span>${result.jiangShen.sign}${result.jiangShen.state}</span><span>${result.jiangShen.sha.join('、') || '无神煞'}</span>`;
+      document.getElementById('jinkouJiangShenDetail').innerHTML = `<span>${result.jiangShen.element}</span><span>${result.jiangShen.sha.join('、') || '无神煞'}</span>`;
 
       document.getElementById('jinkouDiFenValue').textContent = result.diFen.branch;
-      document.getElementById('jinkouDiFenDetail').innerHTML = `<span>${result.diFen.element}</span><span>${result.diFen.sign}${result.diFen.state}</span><span>${result.diFen.sha.join('、') || '无神煞'}</span>`;
+      document.getElementById('jinkouDiFenDetail').innerHTML = `<span>${result.diFen.element}</span><span>${result.diFen.sha.join('、') || '无神煞'}</span>`;
 
       document.getElementById('jinkouNotes').innerHTML = buildJinkouNotes(result).map(item => `<div>${item}</div>`).join('');
       document.getElementById('jinkouPlaceholder').style.display = 'none';
@@ -3828,78 +4079,50 @@
 
     // 开始计算
     calculateBtn.addEventListener('click', function() {
-      // 验证输入
-      if (!dateInput.value || !timeInput.value) {
-        alert('请选择日期和时间');
+      if (!pendingQimenContext) {
+        alert('请先自动推算局数');
         return;
       }
 
-      if (currentLng === null || currentLat === null) {
-        alert('请选择城市或获取当前位置');
+      const context = buildCalculationContext(true);
+      if (!context) return;
+      if (context.signature !== pendingQimenContext.signature) {
+        invalidateQimenCheck('时间或位置已变更，请重新自动推算局数');
+        alert('时间或位置已变更，请重新自动推算局数');
         return;
       }
 
-      // 解析时间
-      const [year, month, day] = dateInput.value.split('-').map(Number);
-      const [hour, minute] = timeInput.value.split(':').map(Number);
-      const inputDate = new Date(year, month - 1, day, hour, minute);
-
-      // 计算用的时间（可能是真太阳时）
-      let calcDate = inputDate;
-      const useTrueSolar = useTrueSolarTime.checked;
-
-      if (useTrueSolar) {
-        calcDate = getTrueSolarTime(inputDate, currentLat, currentLng);
-      }
-
-      // 使用 lunar-javascript 计算
-      const calcHour = calcDate.getHours();
-      const calcMinute = calcDate.getMinutes();
-      
-      // 处理子时换日规则：23:00-24:00 用当天日干，00:00-01:00 用次日日干
-      // lunar-javascript 的 Solar.fromYmdHms 会处理时辰
-      const solar = Solar.fromYmdHms(
-        calcDate.getFullYear(),
-        calcDate.getMonth() + 1,
-        calcDate.getDate(),
-        calcHour,
-        calcMinute,
-        0
-      );
-      const lunar = solar.getLunar();
-
-      // 获取干支八字
-      const eightChar = lunar.getEightChar();
-      // 对齐参考站：23点后的子时仍按当日干支，不以前一小时切到次日
-      if (eightChar.setSect) {
-        eightChar.setSect(1);
-      }
-      
-      // 年柱
-      const yearGan = eightChar.getYearGan();
-      const yearZhi = eightChar.getYearZhi();
-      
-      // 月柱
-      const monthGan = eightChar.getMonthGan();
-      const monthZhi = eightChar.getMonthZhi();
-      
-      // 日柱
-      const dayGan = eightChar.getDayGan();
-      const dayZhi = eightChar.getDayZhi();
-      
-      // 时柱
-      const hourGan = eightChar.getTimeGan();
-      const hourZhi = eightChar.getTimeZhi();
-
-      // 计算符头和三元
-      const fuTou = getFuTou(dayGan, dayZhi);
-      const sanYuan = getSanYuan(fuTou.zhi);
-
-      // 获取节气信息
-      const prevJieQi = lunar.getPrevJieQi();
-      const nextJieQi = lunar.getNextJieQi();
-      const prevJie = lunar.getPrevJie ? lunar.getPrevJie() : prevJieQi;
-      const nextJie = lunar.getNextJie ? lunar.getNextJie() : nextJieQi;
+      const {
+        inputDate,
+        calcDate,
+        useTrueSolar,
+        lunar,
+        year,
+        month,
+        day,
+        hour,
+        minute,
+        yearGan,
+        yearZhi,
+        monthGan,
+        monthZhi,
+        dayGan,
+        dayZhi,
+        hourGan,
+        hourZhi,
+        fuTou,
+        sanYuan,
+        prevJieQi,
+        nextJieQi,
+        prevJie,
+        nextJie,
+        prevJieQiDate,
+        nextJieQiDate,
+        prevJieDate,
+        nextJieDate,
+        currentJieqi,
+        autoQimenJu
+      } = context;
 
       // 显示结果
       document.getElementById('resultPlaceholder').style.display = 'none';
@@ -3929,42 +4152,6 @@
       document.getElementById('futouValue').textContent = fuTou.ganZhi;
       document.getElementById('sanyuanValue').textContent = sanYuan;
 
-      // 节气信息
-      const prevJieQiSolar = prevJieQi.getSolar();
-      const nextJieQiSolar = nextJieQi.getSolar();
-      
-      const prevJieQiDate = new Date(
-        prevJieQiSolar.getYear(),
-        prevJieQiSolar.getMonth() - 1,
-        prevJieQiSolar.getDay(),
-        prevJieQiSolar.getHour(),
-        prevJieQiSolar.getMinute()
-      );
-      
-      const nextJieQiDate = new Date(
-        nextJieQiSolar.getYear(),
-        nextJieQiSolar.getMonth() - 1,
-        nextJieQiSolar.getDay(),
-        nextJieQiSolar.getHour(),
-        nextJieQiSolar.getMinute()
-      );
-      const prevJieSolar = prevJie.getSolar ? prevJie.getSolar() : prevJieQiSolar;
-      const nextJieSolar = nextJie.getSolar ? nextJie.getSolar() : nextJieQiSolar;
-      const prevJieDate = new Date(
-        prevJieSolar.getYear(),
-        prevJieSolar.getMonth() - 1,
-        prevJieSolar.getDay(),
-        prevJieSolar.getHour(),
-        prevJieSolar.getMinute()
-      );
-      const nextJieDate = new Date(
-        nextJieSolar.getYear(),
-        nextJieSolar.getMonth() - 1,
-        nextJieSolar.getDay(),
-        nextJieSolar.getHour(),
-        nextJieSolar.getMinute()
-      );
-
       document.getElementById('prevJieqiName').textContent = prevJieQi.getName();
       document.getElementById('prevJieqiTime').textContent = formatDateTime(prevJieQiDate);
       document.getElementById('prevJieqiDistance').textContent = getJieQiDistance(inputDate, prevJieQiDate);
@@ -3974,24 +4161,19 @@
       document.getElementById('nextJieqiDistance').textContent = getJieQiDistance(inputDate, nextJieQiDate);
 
       // 奇门遁甲局数
-      const currentJieqi = prevJieQi.getName();
-      const qimenJu = getQimenJu(currentJieqi, sanYuan);
+      const qimenJu = document.getElementById('adjustedJu').textContent;
       
       document.getElementById('qimenPlaceholder').style.display = 'none';
       document.getElementById('qimenContent').classList.add('show');
       document.getElementById('qimenJieqi').textContent = currentJieqi;
       document.getElementById('qimenSanyuan').textContent = sanYuan;
       document.getElementById('qimenJu').textContent = qimenJu;
-      document.getElementById('qimenJu').style.color = '#e74c3c'; // 重置颜色
+      document.getElementById('qimenJu').style.color = '#e74c3c';
+      document.getElementById('qimenAutoJu').textContent = autoQimenJu;
+      document.getElementById('qimenJuSource').textContent =
+        qimenJu === autoQimenJu ? '采用自动推算局数' : `已手动校正，自动推算为${autoQimenJu}`;
 
-      // 设置手动调整的默认值
-      const isYangDun = qimenJu.startsWith('阳');
-      document.getElementById('yinYangSelect').value = isYangDun ? '阳遁' : '阴遁';
-      const juNum = qimenJu.replace(/[阳阴遁局]/g, '');
-      document.getElementById('juShuSelect').value = juNum;
-      updateAdjustedJu();
-
-      // 保存时干支用于手动调整
+      // 保存时干支用于起盘
       currentHourGan = hourGan;
       currentHourZhi = hourZhi;
 
@@ -4088,32 +4270,13 @@
       updateDiPan(qimenJu, hourGan, hourZhi);
     });
 
-    // 更新调整后的局数显示
-    function updateAdjustedJu() {
-      const yinYang = document.getElementById('yinYangSelect').value;
-      const juShu = document.getElementById('juShuSelect').value;
-      document.getElementById('adjustedJu').textContent = yinYang + juShu + '局';
-    }
-
-    // 监听下拉框变化
-    document.getElementById('yinYangSelect').addEventListener('change', updateAdjustedJu);
-    document.getElementById('juShuSelect').addEventListener('change', updateAdjustedJu);
-
-    // 确认调整按钮
-    document.getElementById('confirmAdjustBtn').addEventListener('click', function() {
-      const adjustedJu = document.getElementById('adjustedJu').textContent;
-      document.getElementById('qimenJu').textContent = adjustedJu;
-      document.getElementById('qimenJu').style.color = '#27ae60';
-      // 更新地盘和值符值使
-      updateDiPan(adjustedJu, currentHourGan, currentHourZhi);
-    });
-
     // 初始化
     initCitySelect();
     setCurrentTime();
     // 默认选择北京
     citySelect.value = JSON.stringify({ lng: 116.4074, lat: 39.9042 });
-    updateCoordDisplay(116.4074, 39.9042);
+    updateCoordDisplay(116.4074, 39.9042, { invalidate: false });
+    resetQimenCheckState();
   </script>
 </body>
 </html>
