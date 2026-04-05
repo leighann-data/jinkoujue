@@ -3557,15 +3557,42 @@
       return yangSet.has(target) ? '+' : '-';
     }
 
-    function getWangXiangState(baseElement, targetElement) {
-      if (baseElement === targetElement) return '旺';
+    function getWangXiangState(monthElement, targetElement) {
+      if (monthElement === targetElement) return '旺';
       const generateMap = { '木': '火', '火': '土', '土': '金', '金': '水', '水': '木' };
       const controlMap = { '木': '土', '土': '水', '水': '火', '火': '金', '金': '木' };
-      if (generateMap[baseElement] === targetElement) return '相';
-      if (generateMap[targetElement] === baseElement) return '休';
-      if (controlMap[targetElement] === baseElement) return '囚';
-      if (controlMap[baseElement] === targetElement) return '死';
+      if (generateMap[monthElement] === targetElement) return '相';
+      if (generateMap[targetElement] === monthElement) return '休';
+      if (controlMap[targetElement] === monthElement) return '囚';
+      if (controlMap[monthElement] === targetElement) return '死';
       return '';
+    }
+
+    function resolveWangBaseElement(renYuanElement, guiShenElement, jiangShenElement, diFenElement) {
+      const elements = [renYuanElement, guiShenElement, jiangShenElement, diFenElement];
+      const counts = {};
+      elements.forEach(element => {
+        counts[element] = (counts[element] || 0) + 1;
+      });
+
+      const ranked = Object.entries(counts).sort((a, b) => b[1] - a[1]);
+      if (ranked.length && ranked[0][1] > 1 && (ranked.length === 1 || ranked[0][1] > ranked[1][1])) {
+        return ranked[0][0];
+      }
+
+      const generateMap = { '木': '火', '火': '土', '土': '金', '金': '水', '水': '木' };
+      const controlMap = { '木': '土', '土': '水', '水': '火', '火': '金', '金': '木' };
+      const others = [guiShenElement, jiangShenElement, diFenElement];
+
+      if (others.some(element => controlMap[renYuanElement] === element)) {
+        return renYuanElement;
+      }
+
+      if (others.some(element => generateMap[element] === renYuanElement)) {
+        return renYuanElement;
+      }
+
+      return renYuanElement;
     }
 
     function resolveYongShen(renYuanSign, guiSign, jiangSign, diFenSign) {
@@ -3986,7 +4013,7 @@
       const renYuanElement = stemElements[renYuanStem];
       const diFenElement = branchElements[diFenBranch];
       const shaMap = getShaMap(monthZhi, dayGan, dayZhi);
-      const stateBaseElement = renYuanElement;
+      const stateBaseElement = resolveWangBaseElement(renYuanElement, guiShen.element, jiangShen.element, diFenElement);
       const diFenState = getWangXiangState(stateBaseElement, diFenElement);
       guiShen.sign = getYinYangSign(guiShen.stem);
       guiShen.state = getWangXiangState(stateBaseElement, guiShen.element);

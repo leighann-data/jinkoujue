@@ -12,6 +12,10 @@
     "ganzhi": "丙午年 辛卯月 戊申日 癸亥时",
     "guishen": "癸亥（天后）",
     "shensha": "日禄-巳 · 驿马-寅 · 桃花-酉 · 贵人-丑未",
+    "renyuan_signstate": "+旺",
+    "guishen_signstate": "-相",
+    "jiangshen_signstate": "-休",
+    "difen_signstate": "+旺",
     "jishi": "子卯时",
     "wudong": "财动",
     "sandong": "兄弟动"
