@@ -5,7 +5,7 @@
 - 奇门遁甲排盘
 - 金口诀排盘
 
-页面入口默认使用根目录的 [index.html](/Users/leighann/Workspace/jinkoujue/index.html)，它会跳转到主页面 [奇门遁甲+金口诀排盘.html](/Users/leighann/Workspace/jinkoujue/奇门遁甲+金口诀排盘.html)。
+页面入口默认使用根目录的 [index.html](/Users/leighann/Workspace/jinkoujue/index.html)，它会跳转到主页面 [qimen-jinkoujue-0405.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue-0405.html)。
 
 ## 本地使用
 
@@ -21,7 +21,7 @@ node fixtures/qimen/evaluate-current.js
 
 ## 项目结构
 
-- [奇门遁甲+金口诀排盘.html](/Users/leighann/Workspace/jinkoujue/奇门遁甲+金口诀排盘.html)：主页面
+- [qimen-jinkoujue-0405.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue-0405.html)：主页面
 - [fixtures/jinkoujue](/Users/leighann/Workspace/jinkoujue/fixtures/jinkoujue)：金口诀 fixture、原始参考页和校验脚本
 - [fixtures/qimen](/Users/leighann/Workspace/jinkoujue/fixtures/qimen)：奇门 fixture 和校验脚本
 - [vendor/lunar.js](/Users/leighann/Workspace/jinkoujue/vendor/lunar.js)：本地测试使用的 `lunar-javascript`
@@ -52,4 +52,4 @@ node fixtures/qimen/evaluate-current.js
 - 若仓库已开启 GitHub Pages，发布地址通常为：
   `https://leighann-data.github.io/jinkoujue/`
 
-如果后续要继续迭代页面，建议始终以 [奇门遁甲+金口诀排盘.html](/Users/leighann/Workspace/jinkoujue/奇门遁甲+金口诀排盘.html) 为主文件，`index.html` 只保留为站点入口。
+如果后续要继续迭代页面，建议始终以 [qimen-jinkoujue-0405.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue-0405.html) 为主文件，`index.html` 只保留为站点入口。
