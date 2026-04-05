@@ -1,0 +1,30 @@
+{
+  "id": "2026-04-05_02-40_gui-night_difen-shen_zhongqi",
+  "source": "china95",
+  "verified": true,
+  "input": {
+    "solar": "2026-04-05 02:40",
+    "gui_mode": "night",
+    "difen": "申",
+    "jiang_mode": "zhongqi"
+  },
+  "expected": {
+    "ganzhi": "丙午年 壬辰月 己酉日 乙丑时",
+    "jiepair": "清明/立夏",
+    "yuejiang": "戌",
+    "shensha": "日禄-午 · 驿马-亥 · 桃花-午 · 贵人-子申",
+    "rikong": "寅、卯",
+    "sidakongwang": "无",
+    "jishi": "酉卯时",
+    "wudong": "官动",
+    "sandong": "父母动",
+    "renyuan": "壬",
+    "guishen": "乙丑（贵人）",
+    "jiangshen": "己巳（太乙）",
+    "difen": "申"
+  },
+  "notes": [
+    "该样本位于清明后 1 分钟，用于校正按中气换将仍沿用上月将。",
+    "参考站结果页显示：月将为戌将（按中气取）。"
+  ]
+}

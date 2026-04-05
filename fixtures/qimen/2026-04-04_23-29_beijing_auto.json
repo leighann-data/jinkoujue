@@ -1,0 +1,32 @@
+{
+  "id": "2026-04-04_23-29_beijing_auto",
+  "source": "local-current",
+  "verified": false,
+  "input": {
+    "solar": "2026-04-04 23:29:00",
+    "ju": "拆补局"
+  },
+  "expected": {
+    "ganzhi": "丙午年 辛卯月 己酉日 甲子时",
+    "jieqi_pair": "春分/清明",
+    "current_jieqi": "春分",
+    "futou": "己酉",
+    "sanyuan": "上元",
+    "ju": "阳遁三局",
+    "xunshou": "甲子(戊)",
+    "zhifu": "天冲",
+    "zhishi": "伤门",
+    "tianpan_target": 3,
+    "door_target": 3,
+    "kongma": {
+      "voidBranches": ["戌", "亥"],
+      "voidPalaces": [6],
+      "maXingBranch": "寅",
+      "maXingPalace": 8
+    }
+  },
+  "notes": [
+    "本样本用于锁定子时换日后的奇门主链路。",
+    "待 reference qimen_show.asp 抓通后，再改为 china95 已验证样本。"
+  ]
+}

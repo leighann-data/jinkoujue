@@ -1,0 +1,18 @@
+{
+  "id": "2026-04-04_22-50_gui-day_difen-shen",
+  "source": "china95",
+  "verified": true,
+  "input": {
+    "solar": "2026-04-04 22:50",
+    "gui_mode": "day",
+    "difen": "申",
+    "jiang_mode": "jie"
+  },
+  "expected": {
+    "ganzhi": "丙午年 辛卯月 戊申日 癸亥时",
+    "guishen": "庚申（白虎）"
+  },
+  "notes": [
+    "该样本用于固定昼贵模式下的贵神结果。"
+  ]
+}

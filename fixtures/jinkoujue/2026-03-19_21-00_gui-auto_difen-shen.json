@@ -1,0 +1,28 @@
+{
+  "id": "2026-03-19_21-00_gui-auto_difen-shen",
+  "source": "china95",
+  "verified": true,
+  "input": {
+    "solar": "2026-03-19 21:00",
+    "gui_mode": "auto",
+    "difen": "申",
+    "jiang_mode": "jie"
+  },
+  "expected": {
+    "ganzhi": "丙午年 辛卯月 壬辰日 辛亥时",
+    "yuejiang": "戌",
+    "shensha": "日禄-亥 · 驿马-寅 · 桃花-酉 · 贵人-巳卯",
+    "rikong": "午、未",
+    "sidakongwang": "金",
+    "jishi": "子未时",
+    "wudong": "贼动、官动",
+    "sandong": "子孙动",
+    "renyuan": "戊",
+    "guishen": "壬寅（青龙）",
+    "jiangshen": "丁未（小吉）",
+    "difen": "申"
+  },
+  "notes": [
+    "该样本用于确认壬日日禄仍为亥，避免修正癸日时误伤壬日。"
+  ]
+}

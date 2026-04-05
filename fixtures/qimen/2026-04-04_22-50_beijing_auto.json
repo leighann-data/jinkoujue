@@ -1,0 +1,32 @@
+{
+  "id": "2026-04-04_22-50_beijing_auto",
+  "source": "local-current",
+  "verified": false,
+  "input": {
+    "solar": "2026-04-04 22:50:00",
+    "ju": "拆补局"
+  },
+  "expected": {
+    "ganzhi": "丙午年 辛卯月 戊申日 癸亥时",
+    "jieqi_pair": "春分/清明",
+    "current_jieqi": "春分",
+    "futou": "甲辰",
+    "sanyuan": "下元",
+    "ju": "阳遁六局",
+    "xunshou": "甲寅(癸)",
+    "zhifu": "天芮",
+    "zhishi": "死门",
+    "tianpan_target": 2,
+    "door_target": 2,
+    "kongma": {
+      "voidBranches": ["子", "丑"],
+      "voidPalaces": [1, 8],
+      "maXingBranch": "巳",
+      "maXingPalace": 4
+    }
+  },
+  "notes": [
+    "本样本用于锁定清明前的奇门结果。",
+    "待 reference qimen_show.asp 抓通后，再改为 china95 已验证样本。"
+  ]
+}

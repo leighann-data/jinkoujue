@@ -1,0 +1,32 @@
+{
+  "id": "2026-03-20_21-00_beijing_auto",
+  "source": "local-current",
+  "verified": false,
+  "input": {
+    "solar": "2026-03-20 21:00:00",
+    "ju": "拆补局"
+  },
+  "expected": {
+    "ganzhi": "丙午年 辛卯月 癸巳日 癸亥时",
+    "jieqi_pair": "惊蛰/春分",
+    "current_jieqi": "惊蛰",
+    "futou": "己丑",
+    "sanyuan": "下元",
+    "ju": "阳遁四局",
+    "xunshou": "甲寅(癸)",
+    "zhifu": "天英",
+    "zhishi": "景门",
+    "tianpan_target": 9,
+    "door_target": 9,
+    "kongma": {
+      "voidBranches": ["子", "丑"],
+      "voidPalaces": [1, 8],
+      "maXingBranch": "巳",
+      "maXingPalace": 4
+    }
+  },
+  "notes": [
+    "本样本用于锁定春分前的奇门节气、三元和局数路径。",
+    "待 reference qimen_show.asp 抓通后，再改为 china95 已验证样本。"
+  ]
+}

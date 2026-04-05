@@ -1,0 +1,17 @@
+{
+  "id": "2026-04-04_22-50_gui-auto_difen-hai",
+  "source": "china95",
+  "verified": true,
+  "input": {
+    "solar": "2026-04-04 22:50",
+    "gui_mode": "auto",
+    "difen": "亥",
+    "jiang_mode": "jie"
+  },
+  "expected": {
+    "guishen": "己未（太常）"
+  },
+  "notes": [
+    "该样本来自参考站批量地分校对结果。"
+  ]
+}

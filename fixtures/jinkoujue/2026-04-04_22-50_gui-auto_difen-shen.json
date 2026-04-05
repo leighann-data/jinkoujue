@@ -1,0 +1,25 @@
+{
+  "id": "2026-04-04_22-50_gui-auto_difen-shen",
+  "source": "china95",
+  "verified": true,
+  "input": {
+    "solar": "2026-04-04 22:50",
+    "gui_mode": "auto",
+    "difen": "申",
+    "jiang_mode": "jie"
+  },
+  "expected": {
+    "ganzhi": "丙午年 辛卯月 戊申日 癸亥时",
+    "yuejiang": "戌",
+    "rikong": "寅、卯",
+    "sidakongwang": "无",
+    "renyuan": "庚",
+    "guishen": "癸亥（天后）",
+    "jiangshen": "己未（小吉）",
+    "difen": "申"
+  },
+  "notes": [
+    "该样本已用于校正月将、贵神、将神、人元。",
+    "参考站结果中此课旺衰对应为：人元金+旺，贵神水-相，将神土-休，地分金+旺。"
+  ]
+}

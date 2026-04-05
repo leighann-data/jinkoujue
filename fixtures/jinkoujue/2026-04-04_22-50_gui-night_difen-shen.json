@@ -1,0 +1,23 @@
+{
+  "id": "2026-04-04_22-50_gui-night_difen-shen",
+  "source": "china95",
+  "verified": true,
+  "input": {
+    "solar": "2026-04-04 22:50",
+    "gui_mode": "night",
+    "difen": "申",
+    "jiang_mode": "jie"
+  },
+  "expected": {
+    "ganzhi": "丙午年 辛卯月 戊申日 癸亥时",
+    "guishen": "癸亥（天后）",
+    "shensha": "日禄-巳 · 驿马-寅 · 桃花-酉 · 贵人-丑未",
+    "jishi": "子卯时",
+    "wudong": "财动",
+    "sandong": "兄弟动"
+  },
+  "notes": [
+    "该样本用于固定夜贵模式下的贵神结果。",
+    "参考站结果页显示：忌时子卯时、五动财动、三动兄弟动。"
+  ]
+}

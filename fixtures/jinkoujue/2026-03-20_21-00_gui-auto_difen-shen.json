@@ -1,0 +1,24 @@
+{
+  "id": "2026-03-20_21-00_gui-auto_difen-shen",
+  "source": "china95",
+  "verified": true,
+  "input": {
+    "solar": "2026-03-20 21:00",
+    "gui_mode": "auto",
+    "difen": "申",
+    "jiang_mode": "jie"
+  },
+  "expected": {
+    "ganzhi": "丙午年 辛卯月 癸巳日 癸亥时",
+    "yuejiang": "戌",
+    "rikong": "午、未",
+    "sidakongwang": "金",
+    "renyuan": "庚",
+    "guishen": "甲寅（青龙）",
+    "jiangshen": "己未（小吉）",
+    "difen": "申"
+  },
+  "notes": [
+    "该样本用于校正春分前仍属卯月时的月将与贵神顺逆。"
+  ]
+}

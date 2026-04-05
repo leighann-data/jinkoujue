@@ -1,0 +1,28 @@
+{
+  "id": "2026-03-10_21-00_gui-auto_difen-shen",
+  "source": "china95",
+  "verified": true,
+  "input": {
+    "solar": "2026-03-10 21:00",
+    "gui_mode": "auto",
+    "difen": "申",
+    "jiang_mode": "jie"
+  },
+  "expected": {
+    "ganzhi": "丙午年 辛卯月 癸未日 癸亥时",
+    "yuejiang": "戌",
+    "shensha": "日禄-寅 · 驿马-巳 · 桃花-子 · 贵人-巳卯",
+    "rikong": "申、酉",
+    "sidakongwang": "无",
+    "jishi": "子未时",
+    "wudong": "贼动",
+    "sandong": "兄弟动",
+    "renyuan": "庚",
+    "guishen": "甲寅（青龙）",
+    "jiangshen": "己未（小吉）",
+    "difen": "申"
+  },
+  "notes": [
+    "该样本用于锁定参考站癸日日禄显示为寅的口径。"
+  ]
+}
