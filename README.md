@@ -21,7 +21,7 @@
 注意：
 
 - 主页面 [qimen-jinkoujue-0405.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue-0405.html) 通过 CDN 加载 `lunar-javascript` 和 `suncalc`
-- 因此如果直接把单个 HTML 文件发给别人使用，对方仍需要可用网络
+- 因此本地打开页面时，仍需要可用网络
 
 如果需要本地验证数据回归，可以运行：
 
@@ -39,8 +39,7 @@ node fixtures/qimen/evaluate-current.js
 - [奇门遁甲排盘.html](/Users/leighann/Workspace/jinkoujue/奇门遁甲排盘.html)：旧入口兼容跳转
 - [fixtures/jinkoujue](/Users/leighann/Workspace/jinkoujue/fixtures/jinkoujue)：金口诀 fixture、参考页快照和校验脚本
 - [fixtures/qimen](/Users/leighann/Workspace/jinkoujue/fixtures/qimen)：奇门 fixture 和本地回归脚本
-- [vendor/lunar.js](/Users/leighann/Workspace/jinkoujue/vendor/lunar.js)：本地留存的 `lunar-javascript` 副本，主要供测试脚本使用
-- [vendor/suncalc.js](/Users/leighann/Workspace/jinkoujue/vendor/suncalc.js)：本地留存的 `suncalc` 副本，目前主页面未直接引用
+- [vendor/lunar.js](/Users/leighann/Workspace/jinkoujue/vendor/lunar.js)：测试脚本使用的本地 `lunar-javascript`
 
 ## 测试状态
 
