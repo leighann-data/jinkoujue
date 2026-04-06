@@ -5,7 +5,7 @@
 - 奇门遁甲排盘
 - 金口诀排盘
 
-站点入口使用根目录的 [index.html](/Users/leighann/Workspace/jinkoujue/index.html)，它会跳转到当前主页面 [qimen-jinkoujue-0405.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue-0405.html)。
+站点入口使用根目录的 [index.html](/Users/leighann/Workspace/jinkoujue/index.html)，它会跳转到当前主页面 [qimen-jinkoujue.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue.html)。
 
 ## 当前交互
 
@@ -20,7 +20,7 @@
 
 注意：
 
-- 主页面 [qimen-jinkoujue-0405.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue-0405.html) 通过 CDN 加载 `lunar-javascript` 和 `suncalc`
+- 主页面 [qimen-jinkoujue.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue.html) 通过 CDN 加载 `lunar-javascript` 和 `suncalc`
 - 因此本地打开页面时，仍需要可用网络
 
 如果需要本地验证数据回归，可以运行：
@@ -33,7 +33,7 @@ node fixtures/qimen/evaluate-current.js
 
 ## 项目结构
 
-- [qimen-jinkoujue-0405.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue-0405.html)：当前主页面
+- [qimen-jinkoujue.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue.html)：当前主页面
 - [index.html](/Users/leighann/Workspace/jinkoujue/index.html)：站点入口
 - [奇门遁甲+金口诀排盘.html](/Users/leighann/Workspace/jinkoujue/奇门遁甲+金口诀排盘.html)：旧主文件名兼容跳转
 - [奇门遁甲排盘.html](/Users/leighann/Workspace/jinkoujue/奇门遁甲排盘.html)：旧入口兼容跳转
@@ -75,4 +75,4 @@ node fixtures/qimen/evaluate-current.js
 - 若仓库已开启 GitHub Pages，发布地址通常为：
   `https://leighann-data.github.io/jinkoujue/`
 
-后续如果继续迭代，建议始终以 [qimen-jinkoujue-0405.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue-0405.html) 为主文件，`index.html` 和两个中文旧文件只保留为兼容入口。
+后续如果继续迭代，建议始终以 [qimen-jinkoujue.html](/Users/leighann/Workspace/jinkoujue/qimen-jinkoujue.html) 为主文件，`index.html` 和两个中文旧文件只保留为兼容入口。
